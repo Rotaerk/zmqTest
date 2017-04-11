@@ -12,8 +12,17 @@ build-type: Simple
 extra-source-files: ChangeLog.md
 cabal-version: >=1.10
 
-executable zmqTest-exe
-  hs-source-dirs: src
+executable zmqTestServer-exe
+  hs-source-dirs: server-src
+  main-is: Main.hs
+  build-depends:
+    zeromq4-haskell,
+    pipes-zeromq4,
+    base
+  default-language: Haskell2010
+
+executable zmqTestClient-exe
+  hs-source-dirs: client-src
   main-is: Main.hs
   build-depends:
     zeromq4-haskell,
