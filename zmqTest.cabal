@@ -12,12 +12,25 @@ build-type: Simple
 extra-source-files: ChangeLog.md
 cabal-version: >=1.10
 
+library
+  hs-source-dirs: lib-src
+  exposed-modules: Lib
+  build-depends:
+    bytestring,
+    cereal,
+    base
+  default-language: Haskell2010
+
 executable zmqTestServer-exe
   hs-source-dirs: server-src
   main-is: Main.hs
   build-depends:
-    zeromq4-haskell,
+    async,
+    cereal,
+    pipes-cereal,
     pipes-zeromq4,
+    zeromq4-haskell,
+    zmqTest,
     base
   default-language: Haskell2010
 
@@ -25,7 +38,11 @@ executable zmqTestClient-exe
   hs-source-dirs: client-src
   main-is: Main.hs
   build-depends:
+    async,
+    cereal,
     zeromq4-haskell,
     pipes-zeromq4,
+    pipes-cereal,
+    zmqTest,
     base
   default-language: Haskell2010
